@@ -1,6 +1,6 @@
-# New-Portfolio-framermotion
+# Gourav Raut - Portfolio
 
-Personal portfolio built with React, Vite and Framer Motion.
+Vite + React 19 + MUI. Run locally:
 
 ```bash
 npm install
