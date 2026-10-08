@@ -14,7 +14,7 @@ function MyList() {
         src={dp}
         style={{height:100 , width:100 , marginRight:"auto" , marginLeft:"auto" , marginBottom:"10px",marginTop:"30px"}}
       />
-      {[['about', 'About'], ['skills', 'Skills'], ['projects', 'Projects'], ['socials', 'Socials']].map(([id, label]) => (
+      {[['about', 'About'], ['experience', 'Experience'], ['skills', 'Skills'], ['projects', 'Projects'], ['socials', 'Socials']].map(([id, label]) => (
         <a key={id} href={`/#${id}`} className="headernav" style={linkStyle}>
           <ListItem>
             <ListItemText primary={label} />

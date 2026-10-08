@@ -8,7 +8,7 @@ function AboutMe() {
 
     return (
         <div id="about" style={{display:"flex",alignItems:"center"}}>
-            <img className="instaLoop" src={linkedinPhone} alt="Profile on phone" width="30%"/>
+            <img className="instaLoop" src={linkedinPhone} alt="LinkedIn profile on phone" width="30%"/>
             <div className="aboutMe">
                 <h1>About Me <strong style={{color:"#f5576c"}}>.</strong></h1>
                 <p className="para" style={{width:"70%", marginLeft:"auto",marginRight:"auto"}}>A Hyderabad based software engineer, finishing a B.Tech in CSE-AIML at CMR Engineering College. I build, ship and maintain production apps - full-stack platforms, mobile apps and backend systems used by real people. 10K+ downloads, 800+ students trained, and currently building AI products at Algo Chowk.

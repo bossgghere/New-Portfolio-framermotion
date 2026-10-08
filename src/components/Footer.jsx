@@ -1,4 +1,5 @@
 import React from "react";
+import studioQR from "../assets/img/studioQR.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -29,6 +30,21 @@ function Footer() {
             </p>
           </span>
         </div>
+        {/* small studio card fills the gap between the name and the credit */}
+        <a className="footerCard idCard" href="https://www.onedaystudio.in" target="_blank" rel="noreferrer">
+          <div className="footerCardBar">
+            <h1><strong style={{ color: "#FE5E58" }}> .</strong></h1>
+            <h1><strong style={{ color: "#FEBD2C" }}>.</strong></h1>
+            <h1><strong style={{ color: "#27C841" }}> .</strong></h1>
+          </div>
+          <div className="footerCardBody">
+            <img src={studioQR} alt="One Day Studio QR code" />
+            <div>
+              <h1>One Day Studio</h1>
+              <h3>We ship production apps, fast</h3>
+            </div>
+          </div>
+        </a>
         <p
           className="lastText"
           style={{
