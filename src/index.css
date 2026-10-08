@@ -1229,7 +1229,8 @@ html:not(.ready){ overflow:hidden; }
 
 /* project image containers: a little bigger on every screen */
 @media only screen and (min-width: 1321px) {
-  .projectsDiv{ width:calc(100% + 12vw); margin-left:-6vw; }
+  /* wider than the text column so two big cards always fit side by side (the base rule caps max-width at 100%) */
+  .projectsDiv{ max-width:none; width:calc(100% + 12vw); margin-left:-6vw; padding:20px 0; }
   .projectCard{ width:min(36vw, 600px); }
 }
 @media only screen and (min-width: 601px) and (max-width: 1320px) {
