@@ -1,5 +1,6 @@
 import * as React from "react";
 import DialogProjects from "./DialogProjects";
+import Reveal from "./Reveal";
 
 import algotrade from "../assets/projects/algotrade.jpg";
 import skippr from "../assets/projects/skippr.jpg";
@@ -10,92 +11,95 @@ import web3bank from "../assets/projects/web3-bank.jpg";
 import onedaystudio from "../assets/projects/onedaystudio.jpg";
 import eleven from "../assets/projects/11ven.jpg";
 
-// embed: true  -> the site is opened live inside the popup
-// embed: false -> the site blocks iframes, so the popup shows the preview image instead
+// Clicking a card opens a small popup with the description, tags and links.
+// The first link becomes the main (blue) button.
 const projectList = [
   {
     title: "AlgoTrade",
     imgSrc: algotrade,
-    src: "https://holdmycoffee.lol/",
     description:
-      "AI strategy tester for Indian markets. Turns plain-English trading ideas into backtested strategies for stocks, indices and options. Python, FastAPI, LangGraph, Gemini, Supabase.",
-    github: false,
-    embed: true,
+      "An algorithmic trading research platform. Turns plain-English trading ideas into backtested strategies for Indian stocks, indices and options, with AI strategy generation, secure code execution and statistical validation.",
+    tags: ["Python", "FastAPI", "LangGraph", "Gemini", "Supabase"],
+    links: [{ label: "Live demo", href: "https://holdmycoffee.lol/" }],
   },
   {
     title: "Skippr",
     imgSrc: skippr,
-    src: "https://www.helloskippr.com/",
     description:
-      "Community concierge app for residential societies, live on the Play Store. Resident login, service requests and an admin dashboard. React Native, Expo, Supabase, PostgreSQL, AWS.",
-    github: false,
-    embed: true,
+      "A community concierge app for residential societies, live on the Play Store. OTP login, service requests, task workflows and an admin dashboard.",
+    tags: ["React Native", "Expo", "Supabase", "PostgreSQL", "AWS"],
+    links: [{ label: "Visit site", href: "https://www.helloskippr.com/" }],
   },
   {
     title: "SnapLay",
     imgSrc: snaplay,
-    src: "https://play.google.com/store/apps/details?id=com.company.bingebit&hl=en_IN",
     description:
-      "OTT streaming app with 10K+ downloads. Razorpay payments, Firebase Auth and AWS for media delivery. Flutter, Node.js.",
-    github: false,
-    embed: false,
+      "An OTT streaming app with 10K+ downloads on the Play Store. Razorpay payments, Firebase Auth, ads and AWS media delivery, which made playback 30% faster.",
+    tags: ["Flutter", "Node.js", "Razorpay", "Firebase", "AWS"],
+    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.company.bingebit&hl=en_IN" }],
   },
   {
     title: "GroupMind",
     imgSrc: groupmind,
-    src: "https://github.com/bossgghere/Whatsapp-Group-Bot",
     description:
-      "A free, open-source AI bot for WhatsApp groups. Tag it to answer from chat history, summarise what you missed, set reminders and track tasks. Gemini, Baileys, TypeScript.",
-    github: "https://github.com/bossgghere/Whatsapp-Group-Bot",
-    embed: false,
+      "A free, open-source AI bot for WhatsApp groups. Tag it to answer from chat history, summarise what you missed, set reminders, track tasks and read PDFs and photos.",
+    tags: ["TypeScript", "Gemini", "Baileys"],
+    links: [
+      { label: "GitHub", href: "https://github.com/bossgghere/Whatsapp-Group-Bot" },
+      { label: "LinkedIn post", href: "https://lnkd.in/p/egiMtckC" },
+    ],
   },
   {
     title: "AgentGrid Kitchen",
     imgSrc: agentgrid,
-    src: "https://github.com/bossgghere/AgentGrid-Kitchen",
     description:
-      "A multi-agent automation system where an orchestrator coordinates specialist agents from a live CLI. TypeScript.",
-    github: "https://github.com/bossgghere/AgentGrid-Kitchen",
-    embed: false,
+      "A multi-agent automation system. An orchestrator plans the work and coordinates specialist agents from a live command-line interface.",
+    tags: ["TypeScript", "Multi-agent", "CLI"],
+    links: [{ label: "GitHub", href: "https://github.com/bossgghere/AgentGrid-Kitchen" }],
   },
   {
     title: "Web3 Bank DApp",
     imgSrc: web3bank,
-    src: "https://github.com/bossgghere/personal-dApp-Bank",
     description:
       "A personal banking DApp for sending and receiving ETH. Solidity smart contracts on a local Truffle and Ganache chain, with a Flutter front end.",
-    github: "https://github.com/bossgghere/personal-dApp-Bank",
-    embed: false,
+    tags: ["Solidity", "Truffle", "Ganache", "Flutter"],
+    links: [
+      { label: "GitHub", href: "https://github.com/bossgghere/personal-dApp-Bank" },
+      { label: "LinkedIn post", href: "https://lnkd.in/p/eiCb356X" },
+    ],
   },
   {
     title: "One Day Studio",
     imgSrc: onedaystudio,
-    src: "https://www.onedaystudio.in/",
     description:
       "My software agency. We build and ship scalable web and mobile products, from idea to production, fast.",
-    github: false,
-    embed: true,
+    tags: ["Agency", "Web", "Mobile", "AI"],
+    links: [
+      { label: "Visit site", href: "https://www.onedaystudio.in/" },
+      { label: "LinkedIn post", href: "https://lnkd.in/p/dhPTnF8S" },
+    ],
   },
   {
     title: "11ven",
     imgSrc: eleven,
-    src: "https://11ven.store/",
     description:
-      "A streetwear clothing brand I founded, from design to e-commerce fulfilment.",
-    github: false,
-    embed: true,
+      "A streetwear clothing brand I founded, handling everything from design to e-commerce fulfilment.",
+    tags: ["Streetwear", "E-commerce"],
+    links: [{ label: "Visit store", href: "https://11ven.store/" }],
   },
 ];
 
 function Projects() {
   return (
     <div id="projects">
-      <h1>
-        Projects <strong style={{ color: "#006AFF" }}>.</strong>
-      </h1>
+      <Reveal>
+        <h1>
+          Projects <strong style={{ color: "#006AFF" }}>.</strong>
+        </h1>
+      </Reveal>
       <div className="projectsDiv">
-        {projectList.map((data) => (
-          <DialogProjects key={data.title} {...data} />
+        {projectList.map((data, i) => (
+          <DialogProjects key={data.title} {...data} revealDelay={(i % 2) * 120} />
         ))}
       </div>
     </div>

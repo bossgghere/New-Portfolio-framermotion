@@ -1,17 +1,19 @@
 import React from "react";
+import Reveal from "./Reveal";
 import studioQR from "../assets/img/studioQR.png";
+import instagramQR from "../assets/img/instagramQR.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
     <>
-      <div
+      <Reveal><div
         id="socials"
         style={{
           display: "flex",
-          borderTop: "1px solid #ededed",
+          borderTop: "1px solid var(--hairline)",
           paddingLeft: 20,
           width: "100%",
           alignItems: "center",
@@ -30,21 +32,37 @@ function Footer() {
             </p>
           </span>
         </div>
-        {/* small studio card fills the gap between the name and the credit */}
-        <a className="footerCard idCard" href="https://www.onedaystudio.in" target="_blank" rel="noreferrer">
-          <div className="footerCardBar">
-            <h1><strong style={{ color: "#FE5E58" }}> .</strong></h1>
-            <h1><strong style={{ color: "#FEBD2C" }}>.</strong></h1>
-            <h1><strong style={{ color: "#27C841" }}> .</strong></h1>
-          </div>
-          <div className="footerCardBody">
-            <img src={studioQR} alt="One Day Studio QR code" />
-            <div>
-              <h1>One Day Studio</h1>
-              <h3>We ship production apps, fast</h3>
+        {/* two small cards fill the gap between the name and the credit */}
+        <div className="footerCards">
+          <a className="footerCard idCard" href="https://www.instagram.com/gourav_raut_/" target="_blank" rel="noreferrer">
+            <div className="footerCardBar">
+              <h1><strong style={{ color: "#FE5E58" }}> .</strong></h1>
+              <h1><strong style={{ color: "#FEBD2C" }}>.</strong></h1>
+              <h1><strong style={{ color: "#27C841" }}> .</strong></h1>
             </div>
-          </div>
-        </a>
+            <div className="footerCardBody">
+              <img src={instagramQR} alt="Instagram QR code" />
+              <div>
+                <h1>@gourav_raut_</h1>
+                <h3>Scan to follow on Instagram</h3>
+              </div>
+            </div>
+          </a>
+          <a className="footerCard idCard" href="https://www.onedaystudio.in" target="_blank" rel="noreferrer">
+            <div className="footerCardBar">
+              <h1><strong style={{ color: "#FE5E58" }}> .</strong></h1>
+              <h1><strong style={{ color: "#FEBD2C" }}>.</strong></h1>
+              <h1><strong style={{ color: "#27C841" }}> .</strong></h1>
+            </div>
+            <div className="footerCardBody">
+              <img src={studioQR} alt="One Day Studio QR code" />
+              <div>
+                <h1>One Day Studio</h1>
+                <h3>We ship production apps, fast</h3>
+              </div>
+            </div>
+          </a>
+        </div>
         <p
           className="lastText"
           style={{
@@ -57,8 +75,8 @@ function Footer() {
         >
           Designed and Developed by Me © 2026
         </p>
-      </div>
-      <div
+      </div></Reveal>
+      <Reveal delay={150}><div
         className="socialLinks"
         style={{
           display: "flex",
@@ -68,6 +86,10 @@ function Footer() {
           paddingBottom: 30,
         }}
       >
+        <a className="headernav" href="https://www.instagram.com/gourav_raut_/" style={{ marginTop: -20 }}>
+          {" "}
+          <FontAwesomeIcon icon={faInstagram} size="2x" />
+        </a>
         <a className="headernav" href="https://www.linkedin.com/in/gourav-raut" style={{ marginTop: -20 }}>
           {" "}
           <FontAwesomeIcon icon={faLinkedin} size="2x" />
@@ -80,7 +102,7 @@ function Footer() {
           {" "}
           <FontAwesomeIcon icon={faEnvelope} size="2x" />
         </a>
-      </div>
+      </div></Reveal>
       <span
         style={{ display: "none", fontSize: "150%" }}
         className="specialtext2"

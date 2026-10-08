@@ -1,8 +1,11 @@
 import Header from "./components/Header";
+import ScrollProgress from "./components/ScrollProgress";
+import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import React from "react";
 import IntroComponent from "./components/IntroComponent";
 import AboutMe from "./components/AboutMe";
+import Moments from "./components/Moments";
 import Experience from "./components/Experience";
 import SkillSet from "./components/SkillSet";
 import Projects from "./components/Projects";
@@ -10,11 +13,14 @@ import Projects from "./components/Projects";
 export default function App() {
   return (
     <div className="">
+      <Loader />
+      <ScrollProgress />
       <Header />
       <div className="backgroundDiv">
         <div className="container">
           <IntroComponent />
           <AboutMe />
+          <Moments />
           <Experience />
           <SkillSet />
           <Projects />

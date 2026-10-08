@@ -1,53 +1,41 @@
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import CodeIcon from '@mui/icons-material/Code';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import useReveal from '../hooks/useReveal';
 
-function DialogProjects({ title, imgSrc, src, description, github, embed }) {
-    const [open, setOpen] = React.useState(false);
-    const [size, setSize] = React.useState("xl");
-
-    const handleClickOpen = () => {
-      setOpen(true);
-      setSize("xl");
-    };
-
+// Small popup: preview image, short description, tags, and a row of links (first one is the main button)
+function DialogProjects({ title, imgSrc, description, tags = [], links = [], defaultOpen = false, revealDelay = 0 }) {
+    const [open, setOpen] = React.useState(defaultOpen);
+    const [revealRef, seen] = useReveal();
     const handleClose = () => setOpen(false);
 
-    // green dot toggles the popup between large and medium
-    const changeSize = () => setSize(size === "xl" ? "md" : "xl");
-
     return (
-        <div>
-            <div className="projectCard" onClick={handleClickOpen}>
+        <div ref={revealRef} className={`reveal ${seen ? 'in' : ''}`} style={{ transitionDelay: seen ? `${revealDelay}ms` : '0ms' }}>
+            <div className="projectCard" onClick={() => setOpen(true)}>
               <img src={imgSrc} alt={title} style={{width:"100%",height:"100%",borderRadius:7}}/>
             </div>
-            <Dialog open={open} onClose={handleClose} fullWidth maxWidth={size}>
-              <div style={{marginLeft:"auto",marginRight:"auto",width:"100%",display:"flex",flexDirection:"column",marginTop:0,border:"0px solid lightgrey",borderRadius:0}}>
-                <div style={{padding:5,width:"100%",backgroundColor:"#f0f0f0",fontSize:"150%",borderBottom:"1px solid lightgrey",height:30,borderTopLeftRadius: 10,borderTopRightRadius:10,display:"flex",alignItems: "center"}}>
-                    <div style={{display:"flex",justifyContent:"start",alignItems:"center"}}>
-                        <h1 onClick={handleClose} style={{zIndex:50,marginTop:10,cursor:"pointer"}}><strong style={{color:"#FE5E58"}}> .</strong></h1>
-                        <h1 style={{marginTop:10}}><strong style={{color:"#FEBD2C"}}>.</strong></h1>
-                        <h1 onClick={changeSize} style={{marginTop:10,cursor:"pointer"}}><strong style={{color:"#27C841"}}> .</strong></h1>
-                    </div>
+            <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+              <div style={{width:"100%",display:"flex",flexDirection:"column"}}>
+                <div style={{padding:5,width:"100%",backgroundColor:"var(--bar2)",fontSize:"150%",borderBottom:"1px solid var(--border)",height:30,borderTopLeftRadius: 10,borderTopRightRadius:10,display:"flex",alignItems: "center"}}>
+                    <h1 onClick={handleClose} style={{zIndex:50,marginTop:10,cursor:"pointer"}}><strong style={{color:"#FE5E58"}}> .</strong></h1>
+                    <h1 style={{marginTop:10}}><strong style={{color:"#FEBD2C"}}>.</strong></h1>
+                    <h1 style={{marginTop:10}}><strong style={{color:"#27C841"}}> .</strong></h1>
                 </div>
-                <div style={{display:"flex",flexDirection: 'column',borderRadius:0}}>
-                    <div className="iframeDiv">
-                        {embed
-                          ? <iframe allowFullScreen src={src} title={title} className="iframeFrame"/>
-                          : <img src={imgSrc} alt={title} style={{width:"100%",height:"100%",objectFit:"contain",background:"#fff"}}/>}
-                    </div>
-                    <div className="instaTag" style={{padding:20 , fontSize:"80%"}}>
-                        <div style={{display:"flex",flexDirection:"row",justifyContent:"start",alignItems: "center"}}>
-                        <h1>{title}</h1>
-                        <span style={{float:"right",marginLeft:"auto",display:"block"}} className="headernav">
-                        <a href={src} target="_blank" rel="noreferrer"><OpenInNewIcon style={{marginRight:10}}/></a>
-                        {github ? <a href={github} target="_blank" rel="noreferrer"><CodeIcon/></a> : <></>}
-                        </span>
-                        </div>
-                        <h3 style={{fontFamily:"EBGaramondRegular",opacity:0.3,marginTop:-10}}>
-                          {description}
-                        </h3>
+                <img src={imgSrc} alt={title} style={{width:"100%",display:"block"}}/>
+                <div className="projectPop instaTag">
+                    <h1 style={{margin:"0 0 6px 0"}}>{title}</h1>
+                    <div className="popTags">{tags.map((t) => <span key={t}>{t}</span>)}</div>
+                    <h3 style={{fontFamily:"EBGaramondRegular",opacity:0.45,marginTop:10}}>{description}</h3>
+                    <div className="popActions">
+                        {links.map((l, i) => (
+                          <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                            <button className={i === 0 ? "btn" : "btn2"}>
+                              <FontAwesomeIcon icon={/github\.com/.test(l.href) ? faGithub : faArrowUpRightFromSquare} /> {l.label}
+                            </button>
+                          </a>
+                        ))}
                     </div>
                 </div>
               </div>

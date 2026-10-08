@@ -4,22 +4,49 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      // apply the saved theme before the page paints (light unless the visitor chose dark)
+      try { document.documentElement.dataset.theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light' } catch (e) { document.documentElement.dataset.theme = 'light' }
+    </script>
     <title>Gourav Raut</title>
     <meta
       name="description"
-      content="Gourav Raut — AI Full-Stack Developer at Algo Chowk. I build and ship production apps: mobile, backend and AI."
+      content="Full-stack, mobile and AI apps shipped to production. 10K+ downloads, 800+ students trained, building AI trading tools. Got an idea? Let's build it."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Gourav Raut" />
     <meta name="keywords" content="Gourav Raut, Full Stack Developer, AI Engineer, Flutter, React Native, Node.js, Hyderabad" />
 
+    <!-- Open Graph / Twitter: how the link looks when shared -->
+    <link rel="canonical" href="__SITE_URL__/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Gourav Raut" />
-    <meta property="og:description" content="AI Full-Stack Developer. I build and ship production apps: mobile, backend and AI." />
-    <meta property="og:image" content="/og.jpg" />
+    <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:site_name" content="Gourav Raut" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="Gourav Raut | AI Full-Stack Developer" />
+    <meta property="og:description" content="Full-stack, mobile and AI apps shipped to production. 10K+ downloads, 800+ students trained, building AI trading tools. Got an idea? Let's build it." />
+    <meta property="og:image" content="__SITE_URL__/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Gourav Raut - AI Full-Stack Developer, in a macOS-style window with a coffee cup and his tech stack" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gourav Raut" />
-    <meta name="twitter:image" content="/og.jpg" />
+    <meta name="twitter:title" content="Gourav Raut | AI Full-Stack Developer" />
+    <meta name="twitter:description" content="Full-stack, mobile and AI apps shipped to production. 10K+ downloads, 800+ students trained, building AI trading tools. Got an idea? Let's build it." />
+    <meta name="twitter:image" content="__SITE_URL__/og.jpg" />
+
+    <!-- structured data: helps search engines connect this site with his profiles -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gourav Raut",
+        "jobTitle": "AI Full-Stack Developer",
+        "worksFor": { "@type": "Organization", "name": "Algo Chowk" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressCountry": "IN" },
+        "knowsAbout": ["Full-stack development", "Flutter", "React Native", "Node.js", "AI agents", "Algorithmic trading"],
+        "sameAs": ["https://www.linkedin.com/in/gourav-raut", "https://github.com/bossgghere", "https://www.instagram.com/gourav_raut_/", "https://www.onedaystudio.in"]
+      }
+    </script>
 
     <!-- handwritten accent font used by .cartoonText -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
