@@ -1,0 +1,9 @@
+main { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+.hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; text-align: left; }
+.hero h1 { font-size: clamp(3rem, 9vw, 6rem); margin: 0; letter-spacing: -0.04em; }
+.hero p { font-size: 1.25rem; opacity: 0.7; margin: 12px 0 0; }
+
+.projects { display: grid; gap: 20px; padding: 40px 0 120px; }
+.card { padding: 48px 32px; border-radius: 20px; font-size: 1.5rem; font-weight: 600;
+        border: 1px solid rgba(128, 128, 128, 0.25); background: rgba(128, 128, 128, 0.06); }
